@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<script src="script.js" defer></script>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Admin Dashboard</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Round">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp">
+</head>
+
+<body>
+  <div class='container'>
+    <div class='header'>
+      <div class='logo'>
+        <img src="/Icons/Eberus.svg" alt="Eberus Logo">
+        <h1>EBERUS</h1>
+      </div>
+      <div class='search'>
+        <form>
+          <input type="search" name="search" placeholder="Search">
+        </form>
+      </div>
+      <div class='right-panel'>
+        <button class="material-icons" type="button">help</button>
+        <button class="material-icons" type="button">notifications</button>
+        <div class="user-dropdown">
+          <button class="user" onclick="user()" type="button"><img src="/Images/user_image_male_01.jpg"></button>
+          <div class="dropdown-content" id="user-dropdown">
+            <div class='user-content'>
+              <img src="/Images/user_image_male_01.jpg">
+              <div class="user-info">
+                <h3>Shane Woods</h3>
+                <p>Admin</p>
+              </div>
+            </div>
+            <hr>
+            <h3>Appearance</h3>
+            <div class="theme-dropdown">
+              <select>
+                <option value="dark_mode" class="dark" value="dark">Dark Mode</option>
+                <option value="light">Light Mode</option>
+              </select>
+            </div>
+            <hr>
+            <a href="#">Change Language</a>
+            <a href="#">Account info</a>
+            <a href="#">Profile info</a>
+            <hr>
+            <a href="#">Keyboard Shortcuts</a>
+            <a href="#">Enable Assistant</a>
+            <hr>
+            <a href="#">Give Feedback</a>
+            <a href="#">Terms of Use</a>
+            <button class='logout'><span class="material-icons-outlined logout-icon">logout</span>Logout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='sidebar' id="sidebar">
+      <div class='dam-category'>
+        <h3 class='dam sideTitle'>DAM</h3>
+        <input type='radio' id='dashboard' name='sidebar' value='dashboard' checked>
+        <label for='dashboard' class='dashboard sideLabel'><span
+            class='material-icons'>dashboard</span>Dashboard</label>
+        <input type='radio' id='campaigns' name='sidebar' value='campaigns'>
+        <label for='campaigns' class='campaigns sideLabel'><span
+            class='material-icons'>auto_awesome_mosaic</span>Campaigns</label>
+        <input type='radio' id='starred' name='sidebar' value='starred'>
+        <label for='starred' class='starred sideLabel'><span class='material-icons'>grade</span>Starred</label>
+      </div>
+      <div class='organization-category'>
+        <h3 class='organization sideTitle'>Organization</h3>
+        <input type='radio' id='user' name='sidebar' value='user'>
+        <label for='user' class='user sideLabel'><span class='material-icons'>person</span>Users</label>
+        <input type='radio' id='teams' name='sidebar' value='teams'>
+        <label for='teams' class='teams sideLabel'><span class='material-icons'>group</span>Teams</label>
+        <input type='radio' id='tasks-side' name='sidebar' value='tasks-side'>
+        <label for='tasks-side' class='tasks-side sideLabel'><span
+            class='material-icons-outlined'>check_box</span>Tasks</label>
+      </div>
+      <div class='file-management-category'>
+        <h3 class='file-management sideTitle'>File Management</h3>
+        <input type='radio' id='library' name='sidebar' value='library'>
+        <label for='library' class='library sideLabel'><span
+            class='material-icons-outlined'>inventory_2</span>Library</label>
+        <input type='radio' id='assets' name='sidebar' value='assets'>
+        <label for='assets' class='assets sideLabel'><span class='material-icons'>insert_drive_file</span>Assets</label>
+        <input type='radio' id='trash' name='sidebar' value='trash'>
+        <label for='trash' class='trash sideLabel'><span class='material-icons'>delete</span>Trash</label>
+      </div>
+    </div>
+    <button class='menu-fold' onclick="openClose()"><span class="material-icons-outlined">menu_open</span></button>
+    <div class='tasks'>
+      <div class='tasks-title'>
+        <h2>Your Tasks<span class="material-icons-outlined tooltip">settings</span><span class="tooltiptext">Your
+            tasks</span></h2>
+        <button><span class="material-icons">add_circle</span>Add Task</button>
+      </div>
+      <hr>
+      <dir class='board'>
+        <table>
+          <thead>
+            <tr class='task-list'>
+              <td>
+                <div class='checkbox-container'>
+                  <input type="checkbox" id="checkbox-1" />
+                  <label for="checkbox-1"></label>
+                </div>
+              </td>
+              <td>Task Name<span class="material-icons-outlined">sort</span></td>
+              <td>Assigned</td>
+              <td>Created by</td>
+              <td>Priority</td>
+              <td>Uploaded<span class="material-icons-outlined">sort</span></td>
+              <td>Actions</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class='task-list'>
+              <td>
+                <div class='checkbox-container'>
+                  <input type="checkbox" id="checkbox-2" checked />
+                  <label for="checkbox-2"></label>
+                </div>
+              </td>
+              <td>
+                <p>Create new variant for the x series</p>
+              </td>
+              <td>
+                <p class='circle-name'>N</p>
+              </td>
+              <td>
+                <p class='circle-name'>N</p>
+              </td>
+              <td>
+                <p class='priority urgent'><span>Urgent</span></p>
+              </td>
+              <td>
+                <p>15/3/2022</p>
+              </td>
+              <td>
+                <p><span class="material-icons">more_horiz</span></p>
+              </td>
+            </tr>
+            <tr class='task-list'>
+              <td>
+                <div class='checkbox-container'>
+                  <input type="checkbox" id="checkbox-3" />
+                  <label for="checkbox-3"></label>
+                </div>
+              </td>
+              <td>
+                <p>Update red color variant</p>
+              </td>
+              <td>
+                <p class='circle-name'>N</p>
+              </td>
+              <td>
+                <p class='circle-name'>N</p>
+              </td>
+              <td>
+                <p class='priority urgent'><span>Urgent</span></p>
+              </td>
+              <td>
+                <p>15/3/2022</p>
+              </td>
+              <td>
+                <p><span class="material-icons">more_horiz</span></p>
+              </td>
+            </tr>
+            <tr class='task-list'>
+              <td>
+                <div class='checkbox-container'>
+                  <input type="checkbox" id="checkbox-4" />
+                  <label for="checkbox-4"></label>
+                </div>
+              </td>
+              <td>
+                <p>Invite the marketing department</p>
+              </td>
+              <td>
+                <p class='circle-name'>N</p>
+              </td>
+              <td>
+                <p class='circle-name'>N</p>
+              </td>
+              <td>
+                <p class='priority medium'><span>Medium</span></p>
+              </td>
+              <td>
+                <p>15/3/2022</p>
+              </td>
+              <td>
+                <p><span class="material-icons">more_horiz</span></p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </dir>
+    </div>
+    <div class='learn'>
+      <h2>Start learning Eberus<span class="material-icons-outlined tooltip">info</span><span class="tooltiptext">Learn
+          more</span></h2>
+      <hr>
+      <div class='learn-image'>
+        <img src="/Images/eberus_learn.jpg">
+        <h3>Are you new to Eberus?</h3>
+        <p>Take an interactive tour</p>
+      </div>
+    </div>
+    <div class='projects'>
+      <div class='projects-title'>
+        <h2>Recent<span class="material-icons-outlined tooltip">info</span><span class="tooltiptext">Find your recent
+            files</span></h2>
+        <div>
+          <input type="radio" id="list" name="view-list" value="list"></input>
+          <label for="list" class="material-icons">format_list_bulleted</label>
+          <input type="radio" id="grid" name="view-list" value="grid" checked></input>
+          <label for="grid" class="material-icons-sharp">grid_view</label>
+        </div>
+      </div>
+      <hr>
+      <div class='filtersort'>
+        <div class='filters'>
+          <h3>Filters</h3>
+          <input type="text" id="filter" onkeyup="filter()" placeholder="Winter Collection">
+        </div>
+        <div class='sort'>
+          <h3>Sort by</h3>
+          <div class="dropdown">
+            <select>
+              <option value="0">Recently Modified</option>
+              <option value="1">Date</option>
+              <option value="2">Name</option>
+            </select>
+          </div>
+          <hr>
+          <button type='button' class="material-icons arrow">arrow_downward</button>
+        </div>
+      </div>
+      <div class='cards'>
+        <div class='project-card'>
+          <img src="Images/motorbike_thumb.jpg">
+          <div class='project-info'>
+            <h3>Project Name</h3>
+            <div class='progress-info'>
+              <p>Progress</p>
+              <p>80%</p>
+            </div>
+            <div class='bar'></div>
+            <div class='task-users'>
+              <div class="material-icons-outlined">assignment_turned_in<span>12</span></div>
+              <div class='card-users'>
+                <ul class='shared-users'>
+                  <li>N</li>
+                  <li></li>
+                  <li></li>
+                  <li>+3</li>
+                </ul>
+                <hr>
+                <p>N</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='project-card'>
+          <img src="Images/motorbike_thumb.jpg">
+          <div class='project-info'>
+            <h3>Project Name</h3>
+            <div class='progress-info'>
+              <p>Progress</p>
+              <p>80%</p>
+            </div>
+            <div class='bar'></div>
+            <div class='task-users'>
+              <div class="material-icons-outlined">assignment_turned_in<span>12</span></div>
+              <div class='card-users'>
+                <ul class='shared-users'>
+                  <li>N</li>
+                  <li></li>
+                  <li></li>
+                  <li>+3</li>
+                </ul>
+                <hr>
+                <p>N</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='project-card'>
+          <img src="Images/motorbike_thumb.jpg">
+          <div class='project-info'>
+            <h3>Project Name</h3>
+            <div class='progress-info'>
+              <p>Progress</p>
+              <p>80%</p>
+            </div>
+            <div class='bar'></div>
+            <div class='task-users'>
+              <div class="material-icons-outlined">assignment_turned_in<span>12</span></div>
+              <div class='card-users'>
+                <ul class='shared-users'>
+                  <li>N</li>
+                  <li></li>
+                  <li></li>
+                  <li>+3</li>
+                </ul>
+                <hr>
+                <p>N</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='project-card'>
+          <img src="Images/motorbike_thumb.jpg">
+          <div class='project-info'>
+            <h3>Project Name</h3>
+            <div class='progress-info'>
+              <p>Progress</p>
+              <p>80%</p>
+            </div>
+            <div class='bar'></div>
+            <div class='task-users'>
+              <div class="material-icons-outlined">assignment_turned_in<span>12</span></div>
+              <div class='card-users'>
+                <ul class='shared-users'>
+                  <li>N</li>
+                  <li></li>
+                  <li></li>
+                  <li>+3</li>
+                </ul>
+                <hr>
+                <p>N</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='project-card'>
+          <img src="Images/motorbike_thumb.jpg">
+          <div class='project-info'>
+            <h3>Project Name</h3>
+            <div class='progress-info'>
+              <p>Progress</p>
+              <p>80%</p>
+            </div>
+            <div class='bar'></div>
+            <div class='task-users'>
+              <div class="material-icons-outlined">assignment_turned_in<span>12</span></div>
+              <div class='card-users'>
+                <ul class='shared-users'>
+                  <li>N</li>
+                  <li></li>
+                  <li></li>
+                  <li>+3</li>
+                </ul>
+                <hr>
+                <p>N</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='project-card'>
+          <img src="Images/motorbike_thumb.jpg">
+          <div class='project-info'>
+            <h3>Project Name</h3>
+            <div class='progress-info'>
+              <p>Progress</p>
+              <p>80%</p>
+            </div>
+            <div class='bar'></div>
+            <div class='task-users'>
+              <div class="material-icons-outlined">assignment_turned_in<span>12</span></div>
+              <div class='card-users'>
+                <ul class='shared-users'>
+                  <li>N</li>
+                  <li></li>
+                  <li></li>
+                  <li>+3</li>
+                </ul>
+                <hr>
+                <p>N</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='project-card'>
+          <img src="Images/motorbike_thumb.jpg">
+          <div class='project-info'>
+            <h3>Project Name</h3>
+            <div class='progress-info'>
+              <p>Progress</p>
+              <p>80%</p>
+            </div>
+            <div class='bar'></div>
+            <div class='task-users'>
+              <div class="material-icons-outlined">assignment_turned_in<span>12</span></div>
+              <div class='card-users'>
+                <ul class='shared-users'>
+                  <li>N</li>
+                  <li></li>
+                  <li></li>
+                  <li>+3</li>
+                </ul>
+                <hr>
+                <p>N</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='project-card'>
+          <img src="Images/motorbike_thumb.jpg">
+          <div class='project-info'>
+            <h3>Project Name</h3>
+            <div class='progress-info'>
+              <p>Progress</p>
+              <p>80%</p>
+            </div>
+            <div class='bar'></div>
+            <div class='task-users'>
+              <div class="material-icons-outlined">assignment_turned_in<span>12</span></div>
+              <div class='card-users'>
+                <ul class='shared-users'>
+                  <li>N</li>
+                  <li></li>
+                  <li></li>
+                  <li>+3</li>
+                </ul>
+                <hr>
+                <p>N</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='project-card'>
+          <img src="Images/motorbike_thumb.jpg">
+          <div class='project-info'>
+            <h3>Project Name</h3>
+            <div class='progress-info'>
+              <p>Progress</p>
+              <p>80%</p>
+            </div>
+            <div class='bar'></div>
+            <div class='task-users'>
+              <div class="material-icons-outlined">assignment_turned_in<span>12</span></div>
+              <div class='card-users'>
+                <ul class='shared-users'>
+                  <li>N</li>
+                  <li></li>
+                  <li></li>
+                  <li>+3</li>
+                </ul>
+                <hr>
+                <p>N</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='project-card'>
+          <img src="Images/motorbike_thumb.jpg">
+          <div class='project-info'>
+            <h3>Project Name</h3>
+            <div class='progress-info'>
+              <p>Progress</p>
+              <p>80%</p>
+            </div>
+            <div class='bar'></div>
+            <div class='task-users'>
+              <div class="material-icons-outlined">assignment_turned_in<span>12</span></div>
+              <div class='card-users'>
+                <ul class='shared-users'>
+                  <li>N</li>
+                  <li></li>
+                  <li></li>
+                  <li>+3</li>
+                </ul>
+                <hr>
+                <p>N</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='project-card'>
+          <img src="Images/motorbike_thumb.jpg">
+          <div class='project-info'>
+            <h3>Project Name</h3>
+            <div class='progress-info'>
+              <p>Progress</p>
+              <p>80%</p>
+            </div>
+            <div class='bar'></div>
+            <div class='task-users'>
+              <div class="material-icons-outlined">assignment_turned_in<span>12</span></div>
+              <div class='card-users'>
+                <ul class='shared-users'>
+                  <li>N</li>
+                  <li></li>
+                  <li></li>
+                  <li>+3</li>
+                </ul>
+                <hr>
+                <p>N</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='project-card'>
+          <img src="Images/motorbike_thumb.jpg">
+          <div class='project-info'>
+            <h3>Project Name</h3>
+            <div class='progress-info'>
+              <p>Progress</p>
+              <p>80%</p>
+            </div>
+            <div class='bar'></div>
+            <div class='task-users'>
+              <div class="material-icons-outlined">assignment_turned_in<span>12</span></div>
+              <div class='card-users'>
+                <ul class='shared-users'>
+                  <li>N</li>
+                  <li></li>
+                  <li></li>
+                  <li>+3</li>
+                </ul>
+                <hr>
+                <p>N</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+
+</html>
